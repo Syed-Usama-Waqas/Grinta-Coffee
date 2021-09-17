@@ -9,23 +9,24 @@ void main() {
 
 class MyApp extends StatelessWidget {
   final Future<FirebaseApp> _initialization = Firebase.initializeApp();
+
+   MyApp({Key? key}) : super(key: key);
+  @override
   Widget build(BuildContext context) {
     return FutureBuilder(
       future: _initialization,
       builder: (context, snapshot) {
         if (snapshot.hasError) {
-          return MaterialApp(
-            home: Container(
-              child: Center(
-                child: Text("Error"),
-              ),
+          return const MaterialApp(
+            home: Center(
+              child: Text("Error"),
             ),
           );
         }
         if (snapshot.connectionState == ConnectionState.done) {
-          return App();
+          return const App();
         }
-        return App();
+        return const App();
       },
     );
   }
