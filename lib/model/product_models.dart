@@ -15,11 +15,11 @@ class ProductModel {
 
   Map<String, dynamic> toMap() {
     return {
-      "name": this.name,
-      "price": this.price,
-      "img": this.img,
-      "category": this.category,
-      "description": this.description
+      "name": name,
+      "price": price,
+      "img": img,
+      "category": category,
+      "description": description
     };
   }
 }

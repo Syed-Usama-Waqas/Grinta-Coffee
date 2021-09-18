@@ -100,7 +100,7 @@ class _AdminPanelState extends State<AdminPanel> {
                                                   BorderRadius.circular(10)),
                                           child: Container(
                                             height: size.height * 0.14,
-                                            decoration: BoxDecoration(
+                                            decoration: const BoxDecoration(
                                                 color: Colors.black38,
                                                 borderRadius: BorderRadius.only(
                                                     bottomLeft:
@@ -130,7 +130,7 @@ class _AdminPanelState extends State<AdminPanel> {
                                                             Axis.vertical,
                                                         child: Text(
                                                           list[index]["name"],
-                                                          style: TextStyle(
+                                                          style: const TextStyle(
                                                               fontSize: 20,
                                                               color:
                                                                   Colors.white,
@@ -149,7 +149,7 @@ class _AdminPanelState extends State<AdminPanel> {
                                                         "Price " +
                                                             list[index]
                                                                 ["price"],
-                                                        style: TextStyle(
+                                                        style: const TextStyle(
                                                             fontSize: 14,
                                                             color: Colors.white,
                                                             fontWeight:
@@ -171,7 +171,8 @@ class _AdminPanelState extends State<AdminPanel> {
                                                             vertical:
                                                                 size.height *
                                                                     0.01),
-                                                    decoration: BoxDecoration(
+                                                    decoration:
+                                                        const BoxDecoration(
                                                       color: Colors.white,
                                                       borderRadius:
                                                           BorderRadius.only(
@@ -219,7 +220,7 @@ class _AdminPanelState extends State<AdminPanel> {
                                                             .delete();
                                                       }
                                                     });
-                                                    var snackBar = SnackBar(
+                                                    var snackBar = const SnackBar(
                                                         content: Text(
                                                             'Product Deleted Successfully'));
                                                     ScaffoldMessenger.of(
@@ -232,9 +233,9 @@ class _AdminPanelState extends State<AdminPanel> {
                                           ),
                                         ),
                                         placeholder: (context, url) =>
-                                            CircularProgressIndicator(),
+                                            const CircularProgressIndicator(),
                                         errorWidget: (context, url, error) =>
-                                            Icon(Icons.error),
+                                            const Icon(Icons.error),
                                       ),
                                     );
                                   });
@@ -255,10 +256,10 @@ class _AdminPanelState extends State<AdminPanel> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => AddMenuItem()));
+                                builder: (context) => const AddMenuItem()));
                       },
                       style: ElevatedButton.styleFrom(primary: Colors.black87),
-                      child: Text(
+                      child: const Text(
                         "Add item",
                         style: TextStyle(
                             fontSize: 18, fontWeight: FontWeight.bold),

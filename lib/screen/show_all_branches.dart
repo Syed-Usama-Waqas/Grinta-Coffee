@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttericon/font_awesome5_icons.dart';
+import 'package:grinta/screen/manage_branches.dart';
 import 'package:grinta/screen/manage_categories.dart';
 
 class ShowAllBranches extends StatefulWidget {
@@ -131,7 +132,8 @@ class _ShowAllBranchesState extends State<ShowAllBranches> {
                                                   padding: EdgeInsets.symmetric(
                                                       vertical:
                                                           size.height * 0.01),
-                                                  decoration: BoxDecoration(
+                                                  decoration:
+                                                      const BoxDecoration(
                                                     color: Colors.white,
                                                     borderRadius:
                                                         BorderRadius.only(
@@ -174,7 +176,7 @@ class _ShowAllBranchesState extends State<ShowAllBranches> {
                                                       print(doc["branch_name"]);
                                                     }
                                                   });
-                                                  var snackBar = SnackBar(
+                                                  var snackBar = const SnackBar(
                                                       content: Text(
                                                           'Branch Deleted Successfully'));
                                                   ScaffoldMessenger.of(context)
@@ -204,10 +206,10 @@ class _ShowAllBranchesState extends State<ShowAllBranches> {
                         Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => ManageCategories()));
+                                builder: (context) => const ManageBranches()));
                       },
                       style: ElevatedButton.styleFrom(primary: Colors.black87),
-                      child: Text(
+                      child: const Text(
                         "Add Branches",
                         style: TextStyle(
                             fontSize: 18, fontWeight: FontWeight.bold),

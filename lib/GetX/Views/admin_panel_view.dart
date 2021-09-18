@@ -1,46 +1,42 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:fluttericon/font_awesome_icons.dart';
-import 'package:grinta/screen/show_all_category.dart';
+import 'package:get/get.dart';
+import 'package:grinta/GetX/Bindings/all_bindings.dart';
+import 'package:grinta/GetX/Utils/colors.dart';
+import 'package:grinta/GetX/Views/categories_view.dart';
+import 'package:grinta/GetX/Views/manage_branches_view.dart';
+import 'package:grinta/GetX/Views/manage_categories_view.dart';
+import 'package:grinta/screen/manage_categories.dart';
 import 'package:grinta/screen/show_all_branches.dart';
 
-import 'admin_panel.dart';
-import 'menu.dart';
+class AdminPanelView extends StatelessWidget {
+  const AdminPanelView({Key? key}) : super(key: key);
 
-class AdminHome extends StatefulWidget {
-  final String branchName;
-  const AdminHome({Key? key, required this.branchName}) : super(key: key);
-
-  @override
-  _AdminHomeState createState() => _AdminHomeState();
-}
-
-class _AdminHomeState extends State<AdminHome> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
-    return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title: Text(
-          "Grinta",
-          style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+    return SafeArea(
+      child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: kBlackColor,
+          automaticallyImplyLeading: false,
+          title: const Text(
+            "Grinta",
+            style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+          ),
+          centerTitle: true,
+          actions: [
+            IconButton(
+              onPressed: () {
+                _signOut();
+              },
+              icon: const Icon(FontAwesome.logout, size: 20),
+            )
+          ],
         ),
-        centerTitle: true,
-        actions: [
-          IconButton(
-            onPressed: () {
-              _signOut();
-            },
-            icon: Icon(
-              FontAwesome.logout,
-              size: 20,
-            ),
-          )
-        ],
-      ),
-      body: SafeArea(
-        child: SingleChildScrollView(
+        body: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.symmetric(horizontal: size.width * 0.04),
             child: Column(
@@ -51,7 +47,7 @@ class _AdminHomeState extends State<AdminHome> {
                     decoration: BoxDecoration(),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
+                      children: const [
                         Text(
                           "Admin Panel",
                           style: TextStyle(
@@ -73,10 +69,11 @@ class _AdminHomeState extends State<AdminHome> {
                         width: double.infinity,
                         child: ElevatedButton(
                           onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => ShowAllBranches()));
+                            Get.to(() => ManageBranchesView());
+                            // Navigator.push(
+                            //     context,
+                            //     MaterialPageRoute(
+                            //         builder: (context) => ShowAllBranches()));
                           },
                           style:
                               ElevatedButton.styleFrom(primary: Colors.black87),
@@ -92,10 +89,12 @@ class _AdminHomeState extends State<AdminHome> {
                         width: double.infinity,
                         child: ElevatedButton(
                           onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => ShowAllCategory()));
+                            Get.to(() => ManageCategoriesView(),
+                                binding: CategoriesBinding());
+                            // Navigator.push(
+                            //     context,
+                            //     MaterialPageRoute(
+                            //         builder: (context) => ShowAllCategory()));
                           },
                           style:
                               ElevatedButton.styleFrom(primary: Colors.black87),
@@ -111,11 +110,11 @@ class _AdminHomeState extends State<AdminHome> {
                         width: double.infinity,
                         child: ElevatedButton(
                           onPressed: () {
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => AdminPanel(
-                                        branchName: widget.branchName)));
+                            // Navigator.push(
+                            //     context,
+                            //     MaterialPageRoute(
+                            //         builder: (context) => AdminPanel(
+                            //             branchName: widget.branchName)));
                           },
                           style:
                               ElevatedButton.styleFrom(primary: Colors.black87),
@@ -139,10 +138,11 @@ class _AdminHomeState extends State<AdminHome> {
 
   Future<void> _signOut() async {
     await FirebaseAuth.instance.signOut();
-    Navigator.pushAndRemoveUntil(
-        context,
-        MaterialPageRoute(
-            builder: (context) => MenuScreen(branchName: widget.branchName)),
-        (route) => false);
+    Get.to(() => CategoriesView());
+    // Navigator.pushAndRemoveUntil(
+    //     context,
+    //     MaterialPageRoute(
+    //         builder: (context) => MenuScreen(branchName: widget.branchName)),
+    //     (route) => false);
   }
 }

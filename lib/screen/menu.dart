@@ -126,17 +126,17 @@ class _MenuScreenState extends State<MenuScreen> {
                                         return GestureDetector(
                                           onTap: () {
                                             Navigator.push(
-                                                context,
-                                                MaterialPageRoute(
-                                                    builder: (context) =>
-                                                        ViewProduct(
-                                                          branchName:
-                                                              widget.branchName,
-                                                          categoryName: list[
-                                                                      index][
-                                                                  "category_name"]
-                                                              .toString(),
-                                                        )));
+                                              context,
+                                              MaterialPageRoute(
+                                                builder: (context) =>
+                                                    ViewProduct(
+                                                  branchName: widget.branchName,
+                                                  categoryName: list[index]
+                                                          ["category_name"]
+                                                      .toString(),
+                                                ),
+                                              ),
+                                            );
                                           },
                                           child: Container(
                                             height: size.height * 0.20,

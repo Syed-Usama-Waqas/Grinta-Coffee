@@ -1,23 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:grinta/GetX/Views/select_branch.dart';
+import 'package:grinta/screen/branch_selection.dart';
 import 'package:splash_screen_view/SplashScreenView.dart';
 
-import 'branch_selection.dart';
+class LandingView extends StatelessWidget {
+  const LandingView({Key? key}) : super(key: key);
 
-class App extends StatefulWidget {
-  const App({Key? key}) : super(key: key);
-
-  @override
-  _AppState createState() => _AppState();
-}
-
-class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
+    return GetMaterialApp(
       debugShowCheckedModeBanner: false,
       title: "Grinta Coffee",
       home: SplashScreenView(
-        navigateRoute: const BranchSelection(),
+        navigateRoute: SelectBranch(),
         duration: 3000,
         imageSize: 200,
         imageSrc: "assets/images/logo.png",

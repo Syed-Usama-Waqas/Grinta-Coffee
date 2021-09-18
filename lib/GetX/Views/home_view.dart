@@ -1,16 +1,12 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:grinta/GetX/Bindings/all_bindings.dart';
+import 'package:grinta/GetX/Utils/colors.dart';
+import 'package:grinta/GetX/Views/categories_view.dart';
 
-import 'menu.dart';
+class HomeView extends StatelessWidget {
+  const HomeView({Key? key}) : super(key: key);
 
-class HomeScreen extends StatefulWidget {
-  final String branchName;
-  const HomeScreen({Key? key, required this.branchName}) : super(key: key);
-  @override
-  _HomeScreenState createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     Size size = MediaQuery.of(context).size;
@@ -28,24 +24,26 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
                 GestureDetector(
                   onTap: () {
-                    Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => MenuScreen(
-                                  branchName: widget.branchName,
-                                )));
+                    Get.to(() => CategoriesView(),
+                        binding: CategoriesBinding());
+                    // Navigator.push(
+                    //     context,
+                    //     MaterialPageRoute(
+                    //         builder: (context) => MenuScreen(
+                    //             // branchName: widget.branchName,
+                    //             )));
                   },
                   child: Container(
                     width: size.width * 0.33,
                     height: size.width * 0.33,
                     decoration: BoxDecoration(
-                      color: Color(0xffECECEC),
+                      color: kGreyColor,
                       border: Border.all(color: Colors.black, width: 1.0),
-                      borderRadius: BorderRadius.all(
+                      borderRadius: const BorderRadius.all(
                         Radius.circular(200),
                       ),
                     ),
-                    child: Center(
+                    child: const Center(
                         child: Text(
                       "Menu",
                       style:
